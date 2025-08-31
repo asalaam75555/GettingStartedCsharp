@@ -40,7 +40,25 @@
             PrintSeparator();
         }
 
+        void printDecorartors()
+        {
+            Console.WriteLine("---------------***************---------------");
+        }
+
+        void printName()
+        {
+            Console.WriteLine("Abdul Salaam");
+        }
+
+        void printFinalDecoration()
+        {
+            printDecorartors();
+            printName();
+            printDecorartors();
+        }
+
         // and then call it like this
         PrintHeader();
+        printFinalDecoration();
     }
 }

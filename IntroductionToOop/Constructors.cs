@@ -1,5 +1,4 @@
 ﻿// constructors are used to initialize a class
-using System.ComponentModel;
 
 public sealed class Constructors
 {

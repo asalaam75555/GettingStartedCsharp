@@ -11,6 +11,8 @@
         // static classes cannot have instance members, so anything inside of a static class must also be static
         MyStaticClass.MyStaticMethod();
 
+        ExampleStaticClass.ExampleStaticMethod(); 
+
         // notice how we don't need to make an instance of MyStaticClass to call MyStaticMethod?
         // this is just like Console.WriteLine! This means that Console.WriteLine is a static method!
 
@@ -36,6 +38,23 @@
         // static members are accessible across all instances. this can be
         // convenient, but can also lead to bugs if you're not careful!
         // personally - I advise a lot of caution with using static.
+
+        ExampleNonStaticClass exampleNonStaticClass1 = new ExampleNonStaticClass(); 
+        ExampleNonStaticClass exampleNonStaticClass2 = new ExampleNonStaticClass();
+
+        Console.WriteLine("before mutating properties on example my non static class......");
+        exampleNonStaticClass1.MyInstanceMethod();
+        exampleNonStaticClass2.MyInstanceMethod();
+        ExampleNonStaticClass.MyStaticMethod();
+
+        exampleNonStaticClass1.MyInstanceProperty = "Abdul";
+        exampleNonStaticClass2.MyInstanceProperty = "Salaam";
+        ExampleNonStaticClass.MyStaticProperty = "This is a static property";
+
+        Console.WriteLine("aftre the mutating properties on example my non static class .....");
+        exampleNonStaticClass1.MyInstanceMethod();
+        exampleNonStaticClass2.MyInstanceMethod();
+        ExampleNonStaticClass.MyStaticMethod();
     }
 
     static class MyStaticClass
@@ -43,6 +62,14 @@
         public static void MyStaticMethod()
         {
             Console.WriteLine("I am a static method!");
+        }
+    }
+
+    static class ExampleStaticClass
+    {
+        public static void ExampleStaticMethod()
+        {
+            Console.WriteLine("this is example static method");
         }
     }
 
@@ -64,6 +91,26 @@
         {
             Console.WriteLine($"The static property value is: {MyStaticProperty}");
             Console.WriteLine($"The instance property value is: {MyInstanceProperty}");
+        }
+    }
+
+    class ExampleNonStaticClass
+    { 
+        public string MyInstanceProperty { get; set; }
+
+        public static string MyStaticProperty { get; set ; }  
+
+        public static void MyStaticMethod()
+        {
+            Console.WriteLine($"The static property value is : {MyStaticProperty}");
+
+            //Console.WriteLine($"this is my instance property is : {MyInstanceProperty}"); //this will not work becuse only can access static inside static
+        }
+
+        public void MyInstanceMethod()
+        {
+            Console.WriteLine($"the static property value is : {MyStaticProperty}");
+            Console.WriteLine($"the instance property value is : {MyInstanceProperty}");
         }
     }
 }

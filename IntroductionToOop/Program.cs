@@ -9,5 +9,8 @@
 //ReferenceType referenceType = new ReferenceType();
 //referenceType.RunExample();
 
-FieldsAndProperties fieldsAndProperties = new FieldsAndProperties();
-fieldsAndProperties.RunExample();
+//FieldsAndProperties fieldsAndProperties = new FieldsAndProperties();
+//fieldsAndProperties.RunExample();
+
+StaticVsInstance staticVsInstance = new StaticVsInstance();
+staticVsInstance.RunExample();

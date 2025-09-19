@@ -13,6 +13,13 @@ int IntegerDivision(int x, int y)
 //int result = IntegerDivision(10, 0);
 
 
+int ErrorMethod(int x, int y)
+{
+    return x / y;
+}
+
+//int result = ErrorMethod(10,0);
+
 // exceptions are caught using try-catch blocks
 // try-catch blocks look like this:
 try
@@ -24,6 +31,16 @@ catch (Exception e)
     // code that runs if an exception is thrown
 }
 
+
+try
+{
+
+}
+catch (Exception e)
+{
+
+}
+
 // let's catch the exception from our IntegerDivision method
 try
 {
@@ -32,6 +49,16 @@ try
 catch (Exception e)
 {
     Console.WriteLine("An exception was thrown!");
+    Console.WriteLine(e.Message);
+}
+
+try
+{
+    ErrorMethod(10, 0);
+}
+catch (Exception e)
+{
+    Console.WriteLine("an exception was thrown!");
     Console.WriteLine(e.Message);
 }
 
@@ -50,6 +77,20 @@ catch (Exception e)
     Console.WriteLine(e.Message);
 }
 
+try
+{
+    ErrorMethod(10, 0);
+}
+catch (DivideByZeroException e)
+{
+    Console.WriteLine("you cant divide by zero");
+}
+catch(Exception e)
+{
+    Console.WriteLine("An Exception was thrown!");
+    Console.WriteLine(e.Message);
+}
+
 // we can also use exception filters to catch exceptions that meet certain conditions
 try
 {
@@ -60,6 +101,20 @@ catch (Exception e) when (e.Message.Contains("divide by zero"))
     Console.WriteLine("You can't divide by zero!");
 }
 catch (Exception e)
+{
+    Console.WriteLine("An exception was thrown!");
+    Console.WriteLine(e.Message);
+}
+
+try
+{
+    ErrorMethod(10, 0);
+}
+catch (Exception e) when (e.Message.Contains("divide by zero"))
+{
+    Console.WriteLine("You can't divide by zero");
+}
+catch(Exception e)
 {
     Console.WriteLine("An exception was thrown!");
     Console.WriteLine(e.Message);
@@ -86,6 +141,27 @@ finally
     Console.WriteLine("this code will execute always");
 }
 
+try
+{
+    List<int> listOInts = new List<int>();
+    foreach (int x in listOInts)
+    {
+        Console.WriteLine(x);
+    }
+}
+catch (Exception ex) when (ex.Message.Contains("null reference"))
+{
+    Console.WriteLine("the list is null");
+}
+catch (Exception ex)
+{
+    Console.WriteLine("general exception");
+}
+finally
+{
+    Console.WriteLine("this code will allways execute");
+}
+
 // we can use a finally block to run code after a try-catch block
 try
 {
@@ -102,4 +178,20 @@ catch (Exception e)
 finally
 {
     Console.WriteLine("This code always runs!");
+}
+
+try
+{
+    ErrorMethod(10, 0);
+    //
+    //
+    //
+}catch(Exception e)
+{
+    Console.WriteLine("An exception was thrown");
+    Console.WriteLine(e.Message);
+}
+finally
+{
+    Console.WriteLine("this code always runs!");
 }
